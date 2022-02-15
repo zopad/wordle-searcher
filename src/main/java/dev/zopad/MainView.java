@@ -30,8 +30,6 @@ public class MainView extends VerticalLayout {
         List<String> wordList = wordListHolder.getWordList();
 
         TextField queryField = new TextField();
-        queryField.setPlaceholder(DEFAULT_REGEX);
-        queryField.setValue(DEFAULT_REGEX);
 
         TextArea resultsArea = new TextArea();
         resultsArea.setSizeFull();
@@ -43,6 +41,9 @@ public class MainView extends VerticalLayout {
             List<String> matchedWords = wordList.stream().filter(w -> regex.matcher(w).find()).collect(Collectors.toList());
             resultsArea.setValue(String.join(" ", matchedWords));
         });
+
+        queryField.setPlaceholder(DEFAULT_REGEX);
+        queryField.setValue(DEFAULT_REGEX);
 
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         //addClassName("centered-content");
